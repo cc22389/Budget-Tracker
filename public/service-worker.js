@@ -3,12 +3,6 @@
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 
-const iconSizes = ["192", "512"];
-const iconFiles = iconSizes.map(
-  (size) => `/icons/icon-${size}x${size}.png`
-);
-
-
 const FILES_TO_CACHE = [
     "/",
     "/index.html",
@@ -17,14 +11,15 @@ const FILES_TO_CACHE = [
     "/manifest.webmanifest",
     "/icons/icon-192x192.PNG",
     "/icons/icon-512x512.PNG",
-  ].concat(iconFiles);
+  ];
     
   // install
   self.addEventListener("install", function(evt) {
     evt.waitUntil(
       caches.open(CACHE_NAME).then(cache => {
+        const promise = cache.addAll(FILES_TO_CACHE);
         console.log("Your files were pre-cached successfully!");
-        return cache.addAll(FILES_TO_CACHE);
+        return promise;
       })
     );
   

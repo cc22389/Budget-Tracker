@@ -1,5 +1,3 @@
-// console.log("Hello from the service-worker.js file! ");
-
 const CACHE_NAME = "static-cache-v2";
 const DATA_CACHE_NAME = "data-cache-v1";
 
@@ -7,7 +5,7 @@ const FILES_TO_CACHE = [
     "/",
     "/index.html",
     "/index.js",
-    "/style.css",
+    "/styles.css",
     "/manifest.webmanifest",
     "/icons/icon-192x192.png",
     "/icons/icon-512x512.png",
@@ -17,7 +15,7 @@ const FILES_TO_CACHE = [
   self.addEventListener("install", function(evt) {
     evt.waitUntil(
       caches.open(CACHE_NAME).then(cache => {
-        const promise = cache.addAll(FILES_TO_CACHE);
+        const promise = cache.addAll(FILES_TO_CACHE).catch(e => console.log('1', e));
         console.log("Your files were pre-cached successfully!");
         return promise;
       })
@@ -36,7 +34,7 @@ const FILES_TO_CACHE = [
               return caches.delete(key);
             }
           })
-        );
+        ).catch(e => console.log('2', e));
       })
     );
   

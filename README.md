@@ -23,6 +23,10 @@ An application that tracks account withdrawals and deposits with or without a da
 
 ## Installation
 
+To run this application locally, install Mongod and create a "budget" database with a "transactions" collection.
+
+To run the deployed version of this application, connect to MongoDB Atlas and create a database called "budget" with a collection called "transactions".
+
 To install necessary dependencies, run the following command:
 
 ```
@@ -38,8 +42,14 @@ npm start
 
 Here are all the routes that are of interest:  
 
-### screenshot description goes here..
-![]() 
+### Homepage
+![Homepage](/assets/images/Homepage.PNG)
+
+### Application Offline
+![Offline](/assets/images/Offline.PNG)
+
+### Application Online
+![Online](/assets/images/Online.PNG) 
 
 ## Dependencies
 
@@ -57,6 +67,7 @@ This project is licensed under the Unlicense license.
 ## Contributing
 
 * MongoDB Atlas
+* Mongod + MongoDB (Robo 3T)
 
 ## Questions
 
